@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -45,8 +44,6 @@ public class Lambda1 {
         Optional.ofNullable(names3).ifPresent(list -> list.sort(Comparator.naturalOrder()));
 
         System.out.println(names3);
-
-        Objects.nonNull(names3);
     }
 
 }
