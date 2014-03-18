@@ -29,6 +29,14 @@ public class Lambda1 {
         Collections.sort(names, (a, b) -> b.compareTo(a));
 
         System.out.println(names);
+
+        names.sort(Collections.reverseOrder());
+
+        System.out.println(names);
+
+        List<String> names2 = Arrays.asList("peter", null, "anna", "mike", "xenia");
+        names2.sort(Comparator.nullsLast(String::compareTo));
+        System.out.println(names2);
     }
 
 }
