@@ -1,4 +1,4 @@
 var fun = function(name) {
-    print('Hi there, ' + name);
-    return "success";
+    print('Hi there from Javascript, ' + name);
+    return "greetings from javascript";
 };
