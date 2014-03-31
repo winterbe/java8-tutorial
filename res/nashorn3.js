@@ -86,3 +86,22 @@ list2
     .forEach(function(el) {
         print(el);
     });
+
+
+
+print('------------------');
+print('Extend:');
+
+var Runnable = Java.type('java.lang.Runnable');
+var Printer = Java.extend(Runnable, {
+    run: function() {
+        print('This was printed from a seperate thread.');
+    }
+});
+
+var Thread = Java.type('java.lang.Thread');
+new Thread(new Printer()).start();
+
+new Thread(function() {
+    print('this was printed from another thread');
+}).start();
