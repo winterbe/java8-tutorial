@@ -105,3 +105,21 @@ new Thread(new Printer()).start();
 new Thread(function() {
     print('this was printed from another thread');
 }).start();
+
+
+print('------------------');
+print('Parameter Overload:');
+
+var System = Java.type('java.lang.System');
+
+System.out.println(10);
+System.out["println"](11.0);
+System.out["println(double)"](12);
+
+print('------------------');
+print('JavaBeans:');
+
+var Date = Java.type('java.util.Date');
+var date = new Date();
+date.year += 1900;
+System.out.println(date.year);
