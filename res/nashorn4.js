@@ -46,7 +46,52 @@ print(__FILE__, __LINE__, __DIR__);
 
 // java import
 
-var imports = new JavaImporter(java.util, java.io);
+var imports = new JavaImporter(java.io);
 with (imports) {
-    var map = new HashMap();
+    var file = new File(__FILE__);
+    print(file.getPath());
 }
+
+
+// convert iterable to js array
+
+var list = new java.util.ArrayList();
+list.add("s1");
+list.add("s2");
+list.add("s3");
+
+var jsArray = Java.from(list);
+print(jsArray);
+print(Object.prototype.toString.call(jsArray));
+
+
+// convert js array to java array
+
+var javaArray = Java.to([3, 5, 7, 11], "int[]");
+print(javaArray.class);
+
+
+// calling super
+
+var SuperRunner = Java.type('com.winterbe.java8.SuperRunner');
+var Runner = Java.extend(SuperRunner);
+
+var runner = new Runner() {
+    run: function() {
+        Java.super(runner).run();
+        print('on my run');
+    }
+}
+runner.run();
+
+
+
+// load
+
+load('http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js');
+
+var odds = _.filter([1, 2, 3, 4, 5, 6], function (num) {
+    return num % 2 == 1;
+});
+
+print(odds);
