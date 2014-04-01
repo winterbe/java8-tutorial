@@ -7,6 +7,15 @@ public class Product {
     private String name;
     private double price;
     private int stock;
+    private double valueOfGoods;
+
+    public double getValueOfGoods() {
+        return valueOfGoods;
+    }
+
+    public void setValueOfGoods(double valueOfGoods) {
+        this.valueOfGoods = valueOfGoods;
+    }
 
     public String getName() {
         return name;
