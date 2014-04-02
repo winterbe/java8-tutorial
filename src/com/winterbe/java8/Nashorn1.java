@@ -21,6 +21,7 @@ public class Nashorn1 {
         Invocable invocable = (Invocable) engine;
         Object result = invocable.invokeFunction("fun1", "Peter Parker");
         System.out.println(result);
+        System.out.println(result.getClass());
 
         invocable.invokeFunction("fun2", new Date());
         invocable.invokeFunction("fun2", LocalDateTime.now());
