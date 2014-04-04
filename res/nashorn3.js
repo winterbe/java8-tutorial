@@ -10,10 +10,6 @@ array[2] = 3;
 array[3] = 2;
 array[4] = 1;
 
-for (var i = 0; i < array.length; i++) {
-    print(array[i]);
-}
-
 try {
     array[5] = 23;
 } catch (e) {

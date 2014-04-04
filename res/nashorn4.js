@@ -46,10 +46,11 @@ print(__FILE__, __LINE__, __DIR__);
 
 // java import
 
-var imports = new JavaImporter(java.io);
+var imports = new JavaImporter(java.io, java.lang);
 with (imports) {
     var file = new File(__FILE__);
-    print(file.getPath());
+    System.out.println(file.getAbsolutePath());
+    // /path/to/my/script.js
 }
 
 
@@ -68,7 +69,7 @@ print(Object.prototype.toString.call(jsArray));
 // convert js array to java array
 
 var javaArray = Java.to([3, 5, 7, 11], "int[]");
-print(javaArray.class);
+print(Object.prototype.toString.call(javaArray));
 
 
 // calling super
