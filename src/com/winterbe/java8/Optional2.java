@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * @author Benjamin Winterberg
  */
-public class Streams6 {
+public class Optional2 {
 
     static class Outer {
         Nested nested;
