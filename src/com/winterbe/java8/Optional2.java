@@ -28,6 +28,6 @@ public class Optional2 {
             .flatMap(o -> Optional.ofNullable(o.nested))
             .flatMap(n -> Optional.ofNullable(n.inner))
             .flatMap(i -> Optional.ofNullable(i.foo))
-            .ifPresent(System.out::print);
+            .ifPresent(System.out::println);
     }
 }

@@ -35,7 +35,7 @@ public class Streams7 {
         IntStream.range(1, 4)
             .mapToObj(num -> new Foo("Foo" + num))
             .peek(f -> IntStream.range(1, 4)
-                .mapToObj(num -> new Bar(f.name + " -> Bar" + num))
+                .mapToObj(num -> new Bar("Bar" + num + " <- " + f.name))
                 .forEach(f.bars::add))
             .flatMap(f -> f.bars.stream())
             .forEach(b -> System.out.println(b.name));
@@ -51,7 +51,7 @@ public class Streams7 {
         foos.forEach(f ->
             IntStream
                 .range(1, 4)
-                .forEach(num -> f.bars.add(new Bar(f.name + " -> Bar" + num))));
+                .forEach(num -> f.bars.add(new Bar("Bar" + num + " <- " + f.name))));
 
         foos.stream()
             .flatMap(f -> f.bars.stream())
