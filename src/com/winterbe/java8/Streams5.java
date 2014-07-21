@@ -1,6 +1,6 @@
 package com.winterbe.java8;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -12,20 +12,16 @@ import java.util.stream.Stream;
 public class Streams5 {
 
     public static void main(String[] args) {
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
+        List<String> strings =
+            Arrays.asList("d2", "a2", "b1", "b3", "c");
 
-//        test1(stringCollection);
-//        test2(stringCollection);
-//        test3(stringCollection);
-//        test4(stringCollection);
-        test5(stringCollection);
-//        test6(stringCollection);
-//        test7(stringCollection);
+//        test1(strings);
+//        test2(strings);
+//        test3(strings);
+//        test4(strings);
+//        test5(strings);
+        test6(strings);
+//        test7(strings);
     }
 
     // stream has already been operated upon or closed
@@ -42,15 +38,14 @@ public class Streams5 {
     private static void test6(List<String> stringCollection) {
         stringCollection
             .stream()
-            .filter(s -> {
-                System.out.println("filter: " + s);
-                return s.startsWith("a");
-            })
             .map(s -> {
-                System.out.println("map:    " + s);
+                System.out.println("map:      " + s);
                 return s.toUpperCase();
             })
-            .anyMatch(s -> s.startsWith("A"));
+            .anyMatch(s -> {
+                System.out.println("anyMatch: " + s);
+                return s.startsWith("A");
+            });
     }
 
     private static void test5(List<String> stringCollection) {
