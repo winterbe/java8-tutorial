@@ -2,6 +2,7 @@ package com.winterbe.java8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -20,8 +21,19 @@ public class Streams5 {
 //        test3(strings);
 //        test4(strings);
 //        test5(strings);
-        test6(strings);
+//        test6(strings);
 //        test7(strings);
+        test8(strings);
+    }
+
+    private static void test8(List<String> stringCollection) {
+        Supplier<Stream<String>> streamSupplier =
+            () -> stringCollection
+                .stream()
+                .filter(s -> s.startsWith("a"));
+
+        streamSupplier.get().anyMatch(s -> true);
+        streamSupplier.get().noneMatch(s -> true);
     }
 
     // stream has already been operated upon or closed
