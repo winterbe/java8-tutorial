@@ -35,7 +35,8 @@ public class Streams11 {
 //        test2(persons);
 //        test3(persons);
 //        test4(persons);
-        test5(persons);
+//        test5(persons);
+        test6(persons);
     }
 
     private static void test1(List<Person> persons) {
@@ -92,6 +93,24 @@ public class Streams11 {
                 },
                 (sum1, sum2) -> {
                     System.out.format("combiner: sum1=%s; sum2=%s\n", sum1, sum2);
+                    return sum1 + sum2;
+                });
+
+        System.out.println(ageSum);
+    }
+
+    private static void test6(List<Person> persons) {
+        Integer ageSum = persons
+            .parallelStream()
+            .reduce(0,
+                (sum, p) -> {
+                    System.out.format("accumulator: sum=%s; person=%s; thread=%s\n",
+                        sum, p, Thread.currentThread().getName());
+                    return sum += p.age;
+                },
+                (sum1, sum2) -> {
+                    System.out.format("combiner: sum1=%s; sum2=%s; thread=%s\n",
+                        sum1, sum2, Thread.currentThread().getName());
                     return sum1 + sum2;
                 });
 
