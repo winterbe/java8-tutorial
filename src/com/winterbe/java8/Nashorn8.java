@@ -13,10 +13,10 @@ public class Nashorn8 {
         NashornScriptEngine engine = (NashornScriptEngine) new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval("load('res/nashorn8.js')");
 
-        engine.invokeFunction("evaluate1");
-        engine.invokeFunction("evaluate2");
-        engine.invokeFunction("evaluate3", "Foobar");
-        engine.invokeFunction("evaluate3", new Person("John", "Doe"));
+        engine.invokeFunction("evaluate1");                             // [object global]
+        engine.invokeFunction("evaluate2");                             // [object Object]
+        engine.invokeFunction("evaluate3", "Foobar");                   // Foobar
+        engine.invokeFunction("evaluate3", new Person("John", "Doe"));  // [object global] <- ???????
     }
 
 }
