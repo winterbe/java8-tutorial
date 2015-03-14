@@ -2,6 +2,7 @@ package com.winterbe.java8;
 
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Simplified elvis-like operator. You can achieve the same with Optional but Take has simpler syntax.
@@ -19,15 +20,25 @@ public class Take<T> {
         this.value = value;
     }
 
+    public static <T> Optional<T> of(Supplier<T> resolver) {
+        try {
+            T result = resolver.get();
+            return Optional.ofNullable(result);
+        }
+        catch (NullPointerException e) {
+            return Optional.empty();
+        }
+    }
+
     public static <T> Take<T> of(T something) {
         return new Take<>(something);
     }
 
-    public <S> Take<S> take(Function<? super T, S> mapper) {
+    public <S> Take<S> take(Function<? super T, S> resolver) {
         if (!isPresent()) {
             return empty();
         }
-        S result = mapper.apply(value);
+        S result = resolver.apply(value);
         return new Take<>(result);
     }
 

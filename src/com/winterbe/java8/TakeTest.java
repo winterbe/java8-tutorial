@@ -40,7 +40,21 @@ public class TakeTest {
                 .take(Inner::getFoo)
                 .get();
 
-        System.out.println(optional.get());
+        System.out.println(optional.isPresent());
+
+        something.getNested().inner = null;
+        Optional<String> optional2 = Take.of(() ->
+                something.getNested().getInner().getFoo());
+        System.out.println(optional2.isPresent());
+
+
+        String x = null;
+        String y = "boo";
+        String z = Take.of(x).orElse(y);
+
+        System.out.println(z);
+
+
     }
 
 }
