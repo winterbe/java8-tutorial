@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * @author Benjamin Winterberg
  */
-public class TakeTest {
+public class SomeTest {
 
     static class Outer {
         Nested nested = new Nested();
@@ -34,23 +34,25 @@ public class TakeTest {
     public static void main(String[] args) {
         Outer something = new Outer();
 
-        Optional<String> optional = Take.of(something)
-                .take(Outer::getNested)
-                .take(Nested::getInner)
-                .take(Inner::getFoo)
+        Optional<String> optional = Some.of(something)
+                .get(Outer::getNested)
+                .get(Nested::getInner)
+                .get(Inner::getFoo)
                 .get();
 
         System.out.println(optional.isPresent());
 
         something.getNested().inner = null;
-        Optional<String> optional2 = Take.of(() ->
+
+        optional = Some.of(() ->
                 something.getNested().getInner().getFoo());
-        System.out.println(optional2.isPresent());
+
+        System.out.println(optional.isPresent());
 
 
         String x = null;
         String y = "boo";
-        String z = Take.of(x).orElse(y);
+        String z = Some.of(x).orElse(y);
 
         System.out.println(z);
 

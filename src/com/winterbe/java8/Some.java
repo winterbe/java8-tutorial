@@ -10,13 +10,13 @@ import java.util.function.Supplier;
  * @see Optional2
  * @author Benjamin Winterberg
  */
-public class Take<T> {
+public class Some<T> {
 
-    private static final Take<?> EMPTY = new Take<>(null);
+    private static final Some<?> EMPTY = new Some<>(null);
 
     private T value;
 
-    private Take(T value) {
+    private Some(T value) {
         this.value = value;
     }
 
@@ -30,16 +30,16 @@ public class Take<T> {
         }
     }
 
-    public static <T> Take<T> of(T something) {
-        return new Take<>(something);
+    public static <T> Some<T> of(T something) {
+        return new Some<>(something);
     }
 
-    public <S> Take<S> take(Function<? super T, S> resolver) {
-        if (!isPresent()) {
+    public <S> Some<S> get(Function<? super T, S> resolver) {
+        if (value == null) {
             return empty();
         }
         S result = resolver.apply(value);
-        return new Take<>(result);
+        return new Some<>(result);
     }
 
     public Optional<T> get() {
@@ -47,19 +47,15 @@ public class Take<T> {
     }
 
     public T orElse(T fallback) {
-        if (isPresent()) {
+        if (value != null) {
             return value;
         }
         return fallback;
     }
 
-    public boolean isPresent() {
-        return value != null;
-    }
-
     @SuppressWarnings("unchecked")
-    private static <T> Take<T> empty() {
-        return (Take<T>) EMPTY;
+    private static <T> Some<T> empty() {
+        return (Some<T>) EMPTY;
     }
 
 }
