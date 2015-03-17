@@ -1,7 +1,7 @@
 Java 8 Tutorial Examples
 ==============
 
-This repository contains all code samples from all Java 8 related posts of my blog:
+This repository contains all code samples from all Java 8 related posts of my [blog](http://winterbe.com):
 
 - [Java 8 Tutorial](http://winterbe.com/posts/2014/03/16/java-8-tutorial/)
 - [Java 8 Stream Tutorial](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/)
