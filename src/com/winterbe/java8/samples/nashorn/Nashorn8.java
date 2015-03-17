@@ -1,6 +1,6 @@
 package com.winterbe.java8.samples.nashorn;
 
-import com.winterbe.java8.samples.misc.Person;
+import com.winterbe.java8.samples.lambda.Person;
 import jdk.nashorn.api.scripting.NashornScriptEngine;
 
 import javax.script.ScriptEngineManager;

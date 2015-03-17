@@ -1,4 +1,4 @@
-package com.winterbe.java8.samples.misc;
+package com.winterbe.java8.samples.lambda;
 
 /**
 * @author Benjamin Winterberg

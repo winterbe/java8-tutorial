@@ -1,7 +1,5 @@
 package com.winterbe.java8.samples.lambda;
 
-import com.winterbe.java8.samples.misc.Person;
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
