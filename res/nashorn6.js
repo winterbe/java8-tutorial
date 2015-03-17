@@ -33,7 +33,7 @@ product.set('price', 3.99);
 
 
 // pass backbone model to java method
-var Nashorn6 = Java.type('com.winterbe.java8.Nashorn6');
+var Nashorn6 = Java.type('com.winterbe.java8.samples.nashorn.Nashorn6');
 Nashorn6.getProduct(product.attributes);
 
 
