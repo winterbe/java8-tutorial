@@ -10,8 +10,17 @@ public class String1 {
 
     public static void main(String[] args) {
         testJoin();
+        testChars();
         testPatternPredicate();
         testPatternSplit();
+    }
+
+    private static void testChars() {
+        String string = "foobar";
+        string.chars()
+                .filter(c -> c > 100)
+                .mapToObj(c -> (char)c)
+                .forEach(System.out::println);
     }
 
     private static void testPatternSplit() {
