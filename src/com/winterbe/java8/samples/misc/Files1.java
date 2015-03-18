@@ -21,6 +21,17 @@ public class Files1 {
         testReader();
         testWriter();
         testReadWriteLines();
+        testReaderLines();
+    }
+
+    private static void testReaderLines() throws IOException {
+        try (BufferedReader reader =
+                     Files.newBufferedReader(Paths.get("res", "nashorn1.js"))) {
+            long countPrints = reader.lines()
+                    .filter(line -> line.contains("print"))
+                    .count();
+            System.out.println(countPrints);
+        }
     }
 
     private static void testWriter() throws IOException {
