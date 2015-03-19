@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author Benjamin Winterberg
@@ -49,34 +50,37 @@ public class Files1 {
     }
 
     private static void testWalk() throws IOException {
-        Path start = Paths.get("/Users/benny/Documents");
+        Path start = Paths.get("");
         int maxDepth = 5;
-        long fileCount = Files
-                .walk(start, maxDepth)
-                .filter(path -> String.valueOf(path).endsWith("xls"))
-                .count();
-        System.out.format("XLS files found: %s", fileCount);
+        try (Stream<Path> stream = Files.walk(start, maxDepth)) {
+            long fileCount = stream
+                    .filter(path -> String.valueOf(path).endsWith(".js"))
+                    .count();
+            System.out.format("JS files found: %s", fileCount);
+        }
     }
 
     private static void testFind() throws IOException {
-        Path start = Paths.get("/Users/benny/Documents");
+        Path start = Paths.get("");
         int maxDepth = 5;
-        Files.find(start, maxDepth, (path, attr) ->
-                String.valueOf(path).endsWith("xls"))
-                .sorted()
-                .forEach(System.out::println);
+        try (Stream<Path> stream = Files.find(start, maxDepth, (path, attr) ->
+                String.valueOf(path).endsWith(".js"))) {
+            stream.sorted().forEach(System.out::println);
+        }
     }
 
     private static void testList() throws IOException {
-        Files.list(Paths.get("/usr"))
-                .sorted()
-                .forEach(System.out::println);
+        try (Stream<Path> stream = Files.list(Paths.get("/usr"))) {
+            stream.sorted().forEach(System.out::println);
+        }
     }
 
     private static void testLines() throws IOException {
-        Files.lines(Paths.get("res", "nashorn1.js"))
-                .filter(line -> line.contains("print"))
-                .forEach(System.out::println);
+        try (Stream<String> stream = Files.lines(Paths.get("res", "nashorn1.js"))) {
+            stream
+                    .filter(line -> line.contains("print"))
+                    .forEach(System.out::println);
+        }
     }
 
     private static void testReadWriteLines() throws IOException {
