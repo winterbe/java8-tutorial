@@ -1,7 +1,8 @@
 package com.winterbe.java8.samples.misc;
 
-import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Benjamin Winterberg
@@ -16,29 +17,33 @@ public class String1 {
     }
 
     private static void testChars() {
-        String string = "foobar";
-        string.chars()
-                .filter(c -> c > 100)
-                .mapToObj(c -> (char)c)
-                .forEach(System.out::println);
+        String string = "foobar:foo:bar"
+                .chars()
+                .distinct()
+                .mapToObj(c -> String.valueOf((char) c))
+                .sorted()
+                .collect(Collectors.joining());
+        System.out.println(string);
     }
 
     private static void testPatternSplit() {
-        Pattern.compile(":")
+        String string = Pattern.compile(":")
                 .splitAsStream("foobar:foo:bar")
+                .filter(s -> s.contains("bar"))
                 .sorted()
-                .forEach(System.out::println);
+                .collect(Collectors.joining(":"));
+        System.out.println(string);
     }
 
     private static void testPatternPredicate() {
-        Pattern pattern = Pattern.compile(".*123.*");
-        Predicate<String> predicate = pattern.asPredicate();
-        System.out.println(predicate.test("a123b"));
-        System.out.println(predicate.test("boom"));
+        long count = Stream.of("bob@gmail.com", "alice@hotmail.com")
+                .filter(Pattern.compile(".*@gmail\\.com").asPredicate())
+                .count();
+        System.out.println(count);
     }
 
     private static void testJoin() {
-        String string = String.join(";", "a", "b", "c", "d");
+        String string = String.join(":", "foobar", "foo", "bar");
         System.out.println(string);
     }
 }

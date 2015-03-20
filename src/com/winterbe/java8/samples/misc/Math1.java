@@ -30,28 +30,29 @@ public class Math1 {
         System.out.println(string2);
 
         try {
-            System.out.println(Integer.parseInt(string, 10));
+            Integer.parseInt(string, 10);
         }
         catch (NumberFormatException e) {
-            System.out.println("could not parse signed int of " + maxUnsignedInt);
+            System.err.println("could not parse signed int of " + maxUnsignedInt);
         }
     }
 
     private static void testMathExact() {
+        System.out.println(Integer.MAX_VALUE);
         System.out.println(Integer.MAX_VALUE + 1);
 
         try {
             Math.addExact(Integer.MAX_VALUE, 1);
         }
         catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
 
         try {
             Math.toIntExact(Long.MAX_VALUE);
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        catch (ArithmeticException e) {
+            System.err.println(e.getMessage());
         }
     }
 }
