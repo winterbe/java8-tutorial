@@ -19,16 +19,17 @@ public class Executors1 {
         executor.submit(() -> {
             try {
                 TimeUnit.SECONDS.sleep(seconds);
-                System.out.println("task finished: " + Thread.currentThread().getName());
+                String name = Thread.currentThread().getName();
+                System.out.println("task finished: " + name);
             }
             catch (InterruptedException e) {
                 System.err.println("task interrupted");
             }
         });
-        shutdown(executor);
+        stop(executor);
     }
 
-    static void shutdown(ExecutorService executor) {
+    static void stop(ExecutorService executor) {
         try {
             System.out.println("attempt to shutdown executor");
             executor.shutdown();
@@ -38,6 +39,9 @@ public class Executors1 {
             System.err.println("termination interrupted");
         }
         finally {
+            if (!executor.isTerminated()) {
+                System.err.println("killing non-finished tasks");
+            }
             executor.shutdownNow();
             System.out.println("shutdown finished");
         }

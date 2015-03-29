@@ -9,8 +9,8 @@ public class Threads1 {
 
     public static void main(String[] args) {
         test1();
-        test2();
-        test3();
+//        test2();
+//        test3();
     }
 
     private static void test3() {
@@ -46,13 +46,16 @@ public class Threads1 {
     }
 
     private static void test1() {
-        Runnable runnable = () -> System.out.println("Hello " + Thread.currentThread().getName());
+        Runnable runnable = () -> {
+            String threadName = Thread.currentThread().getName();
+            System.out.println("Hello " + threadName);
+        };
 
         runnable.run();
 
         Thread thread = new Thread(runnable);
         thread.start();
 
-        System.out.println("Nachos!");
+        System.out.println("Done!");
     }
 }

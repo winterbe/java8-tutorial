@@ -19,7 +19,7 @@ public class Executors2 {
     }
 
     private static void test3() throws InterruptedException, ExecutionException, TimeoutException {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         Future<Integer> future = executor.submit(() -> {
             try {
@@ -35,7 +35,7 @@ public class Executors2 {
     }
 
     private static void test2() throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         Future<Integer> future = executor.submit(() -> {
             try {
@@ -52,7 +52,7 @@ public class Executors2 {
     }
 
     private static void test1() throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         Future<Integer> future = executor.submit(() -> {
             try {
