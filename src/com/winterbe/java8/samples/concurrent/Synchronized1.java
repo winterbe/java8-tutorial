@@ -11,7 +11,7 @@ public class Synchronized1 {
 
     private static final int NUM_INCREMENTS = 10000;
 
-    private static int count = 1;
+    private static int count = 0;
 
     public static void main(String[] args) {
         testSyncIncrement();
