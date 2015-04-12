@@ -19,7 +19,7 @@ public class Synchronized1 {
     }
 
     private static void testSyncIncrement() {
-        count = 1;
+        count = 0;
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
@@ -32,7 +32,7 @@ public class Synchronized1 {
     }
 
     private static void testNonSyncIncrement() {
-        count = 1;
+        count = 0;
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
@@ -51,4 +51,5 @@ public class Synchronized1 {
     private static void increment() {
         count = count + 1;
     }
+
 }
