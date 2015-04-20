@@ -2,6 +2,7 @@ package com.winterbe.java8.samples.concurrent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -18,9 +19,21 @@ public class Lock2 {
             lock.lock();
             try {
                 System.out.println(lock.isLocked());
-            } finally {
+                TimeUnit.SECONDS.sleep(1);
+            }
+            catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            finally {
                 lock.unlock();
             }
+        });
+
+        executor.submit(() -> {
+            System.out.println("Locked: " + lock.isLocked());
+            System.out.println("Held by me: " + lock.isHeldByCurrentThread());
+            boolean locked = lock.tryLock();
+            System.out.println("Lock acquired: " + locked);
         });
 
         ConcurrentUtils.stop(executor);
