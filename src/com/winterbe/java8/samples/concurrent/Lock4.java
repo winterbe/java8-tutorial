@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
 
 /**
@@ -22,10 +21,8 @@ public class Lock4 {
         executor.submit(() -> {
             long stamp = lock.writeLock();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                ConcurrentUtils.sleep(1);
                 map.put("foo", "bar");
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
             } finally {
                 lock.unlockWrite(stamp);
             }
@@ -35,9 +32,7 @@ public class Lock4 {
             long stamp = lock.readLock();
             try {
                 System.out.println(map.get("foo"));
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
+                ConcurrentUtils.sleep(1);
             } finally {
                 lock.unlockRead(stamp);
             }

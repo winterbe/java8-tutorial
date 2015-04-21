@@ -20,8 +20,7 @@ public class Lock1 {
         lock.lock();
         try {
             count++;
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -36,7 +35,7 @@ public class Lock1 {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
         IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Lock1::increment));
+                 .forEach(i -> executor.submit(Lock1::increment));
 
         ConcurrentUtils.stop(executor);
 

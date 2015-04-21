@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -23,10 +22,8 @@ public class Lock3 {
         executor.submit(() -> {
             lock.writeLock().lock();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                ConcurrentUtils.sleep(1);
                 map.put("foo", "bar");
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
             } finally {
                 lock.writeLock().unlock();
             }
@@ -36,9 +33,7 @@ public class Lock3 {
             lock.readLock().lock();
             try {
                 System.out.println(map.get("foo"));
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
+                ConcurrentUtils.sleep(1);
             } finally {
                 lock.readLock().unlock();
             }
