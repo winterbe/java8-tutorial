@@ -25,44 +25,26 @@ public class Lock3 {
             try {
                 TimeUnit.SECONDS.sleep(1);
                 map.put("foo", "bar");
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 throw new IllegalStateException(e);
-            }
-            finally {
+            } finally {
                 lock.writeLock().unlock();
             }
         });
 
-        executor.submit(() -> {
+        Runnable readTask = () -> {
             lock.readLock().lock();
             try {
-                String foo = map.get("foo");
-                System.out.println(foo);
+                System.out.println(map.get("foo"));
                 TimeUnit.SECONDS.sleep(1);
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 throw new IllegalStateException(e);
-            }
-            finally {
+            } finally {
                 lock.readLock().unlock();
             }
-        });
-
-        executor.submit(() -> {
-            lock.readLock().lock();
-            try {
-                String foo = map.get("foo");
-                System.out.println(foo);
-                TimeUnit.SECONDS.sleep(1);
-            }
-            catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            finally {
-                lock.readLock().unlock();
-            }
-        });
+        };
+        executor.submit(readTask);
+        executor.submit(readTask);
 
         ConcurrentUtils.stop(executor);
     }

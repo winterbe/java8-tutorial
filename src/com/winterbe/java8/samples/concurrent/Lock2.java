@@ -18,13 +18,10 @@ public class Lock2 {
         executor.submit(() -> {
             lock.lock();
             try {
-                System.out.println(lock.isLocked());
                 TimeUnit.SECONDS.sleep(1);
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 throw new IllegalStateException(e);
-            }
-            finally {
+            } finally {
                 lock.unlock();
             }
         });
