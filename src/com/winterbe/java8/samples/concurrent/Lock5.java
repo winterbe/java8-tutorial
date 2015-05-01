@@ -20,6 +20,8 @@ public class Lock5 {
                 System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
                 ConcurrentUtils.sleep(1);
                 System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
+                ConcurrentUtils.sleep(2);
+                System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
             } finally {
                 lock.unlock(stamp);
             }
