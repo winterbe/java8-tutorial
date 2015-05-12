@@ -3,7 +3,6 @@ package com.winterbe.java8.samples.concurrent;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.IntBinaryOperator;
 import java.util.stream.IntStream;
 
 /**
@@ -45,10 +44,8 @@ public class Atomic1 {
 
         IntStream.range(0, NUM_INCREMENTS)
                 .forEach(i -> {
-                    Runnable task = () -> {
-                        IntBinaryOperator operator = (a, b) -> a + b;
-                        atomicInt.accumulateAndGet(i, operator);
-                    };
+                    Runnable task = () ->
+                            atomicInt.accumulateAndGet(i, (n, m) -> n + m);
                     executor.submit(task);
                 });
 
