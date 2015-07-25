@@ -21,7 +21,27 @@ public class Nashorn11 {
 //        test4();
 //        test5();
 //        test6();
-        test7();
+//        test7();
+        test8();
+    }
+
+    private static void test8() throws ScriptException {
+        NashornScriptEngine engine = createEngine();
+
+        engine.eval("var obj = { foo: 23 };");
+
+        ScriptContext defaultContext = engine.getContext();
+        Bindings defaultBindings = defaultContext.getBindings(ScriptContext.ENGINE_SCOPE);
+
+        SimpleScriptContext context1 = new SimpleScriptContext();
+        context1.setBindings(defaultBindings, ScriptContext.ENGINE_SCOPE);
+
+        SimpleScriptContext context2 = new SimpleScriptContext();
+        context2.getBindings(ScriptContext.ENGINE_SCOPE).put("obj", defaultBindings.get("obj"));
+
+        engine.eval("obj.foo = 44;", context1);
+        engine.eval("print(obj.foo);", context1);
+        engine.eval("print(obj.foo);", context2);
     }
 
     private static void test7() throws ScriptException {
@@ -118,7 +138,10 @@ public class Nashorn11 {
     private static void test2() throws ScriptException {
         NashornScriptEngine engine = createEngine();
         engine.eval("function foo() { print('bar') };");
-        engine.eval("foo();", new SimpleScriptContext());
+
+        SimpleScriptContext context = new SimpleScriptContext();
+        engine.eval("print(Function);", context);
+        engine.eval("foo();", context);
     }
 
     private static void test1() throws ScriptException {
