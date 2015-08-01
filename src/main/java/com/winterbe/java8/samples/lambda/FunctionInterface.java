@@ -3,7 +3,7 @@ package com.winterbe.java8.samples.lambda;
 /**
  * @author Benjamin Winterberg
  */
-public class LambdaToInterface {
+public class FunctionInterface {
 
 	@FunctionalInterface
 	public static interface Converter<F, T> {
