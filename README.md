@@ -22,7 +22,7 @@ This article was originally posted on [my blog](http://winterbe.com/posts/2014/0
   * [Suppliers](#suppliers)
   * [Consumers](#consumers)
   * [Comparators](#comparators)
-** [Optionals](#optionals)
+* [Optionals](#optionals)
 * [Streams](#streams)
   * [Filter](#filter)
   * [Sorted](#sorted)
@@ -335,7 +335,7 @@ comparator.compare(p1, p2);             // > 0
 comparator.reversed().compare(p1, p2);  // < 0
 ```
 
-### Optionals
+## Optionals
 
 Optionals are not functional interfaces, instead it's a nifty utility to prevent `NullPointerException`. It's an important concept for the next section, so let's have a quick look at how Optionals work.
 
