@@ -2,7 +2,7 @@
 
 > [“Java is still not dead—and people are starting to figure that out.”](https://twitter.com/mreinhold/status/429603588525281280)
 
-Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial guides you step by step through all new language features. Backed by short and simple code samples you'll learn how to use default interface methods, lambda expressions, method references and repeatable annotations. At the end of the article you'll be familiar with the most recent [API](http://download.java.net/jdk8/docs/api/) changes like streams, functional interfaces, map extensions and the new Date API. No walls of text - just a bunch of commented code snippets. Enjoy!
+Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial guides you step by step through all new language features. Backed by short and simple code samples you'll learn how to use default interface methods, lambda expressions, method references and repeatable annotations. At the end of the article you'll be familiar with the most recent [API](http://download.java.net/jdk8/docs/api/) changes like streams, functional interfaces, map extensions and the new Date API. **No walls of text, just a bunch of commented code snippets. Enjoy!**
 
 This article was originally posted on [my blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/).
 
@@ -41,7 +41,7 @@ This article was originally posted on [my blog](http://winterbe.com/posts/2014/0
   * [LocalDate](#localdate)
   * [LocalDateTime](#localdatetime)
 * [Annotations](#annotations)
-* [Where to go from here](#where-to-go-from-here)
+* [Where to go from here?](#where-to-go-from-here)
 
 ## Default Methods for Interfaces
 
