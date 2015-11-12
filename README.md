@@ -4,7 +4,44 @@
 
 Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial guides you step by step through all new language features. Backed by short and simple code samples you'll learn how to use default interface methods, lambda expressions, method references and repeatable annotations. At the end of the article you'll be familiar with the most recent [API](http://download.java.net/jdk8/docs/api/) changes like streams, functional interfaces, map extensions and the new Date API. No walls of text - just a bunch of commented code snippets. Enjoy!
 
-This article was originally posted on my [blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/).
+This article was originally posted on [my blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/).
+
+## Table of Contents
+
+* [Default Methods for Interfaces](#default-methods-for-interfaces)
+* [Lambda expressions](#lambda-expressions)
+* [Functional Interfaces](#functional-interfaces)
+* [Method and Constructor References](#method-and-constructor-references)
+* [Lambda Scopes](#lambda-scopes)
+  * [Accessing local variables](#accessing-local-variables)
+  * [Accessing fields and static variables](#accessing-fields-and-static-variables)
+  * [Accessing Default Interface Methods](#accessing-default-interface-methods)
+* [Built-in Functional Interfaces](#built-in-functional-interfaces)
+  * [Predicates](#predicates)
+  * [Functions](#functions)
+  * [Suppliers](#suppliers)
+  * [Consumers](#consumers)
+  * [Comparators](#comparators)
+** [Optionals](#optionals)
+* [Streams](#streams)
+  * [Filter](#filter)
+  * [Sorted](#sorted)
+  * [Map](#map)
+  * [Match](#match)
+  * [Count](#count)
+  * [Reduce](#reduce)
+* [Parallel Streams](#parallel-streams)
+  * [Sequential Sort](#sequential-sort)
+  * [Parallel Sort](#parallel-sort)
+* [Maps](#maps)
+* [Date API](#date-api)
+  * [Clock](#clock)
+  * [Timezones](#timezones)
+  * [LocalTime](#localtime)
+  * [LocalDate](#localdate)
+  * [LocalDateTime](#localdatetime)
+* [Annotations](#annotations)
+* [Where to go from here](#where-to-go-from-here)
 
 ## Default Methods for Interfaces
 
@@ -492,7 +529,7 @@ System.out.println(String.format("parallel sort took: %d ms", millis));
 
 As you can see both code snippets are almost identical but the parallel sort is roughly 50% faster. All you have to do is change `stream()` to `parallelStream()`.
 
-## Map
+## Maps
 
 As already mentioned maps don't support streams. Instead maps now support various new and useful methods for doing common tasks.
 
