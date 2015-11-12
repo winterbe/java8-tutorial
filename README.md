@@ -108,7 +108,7 @@ Collections.sort(names, (String a, String b) -> b.compareTo(a));
 For one line method bodies you can skip both the braces `{}` and the `return` keyword. But it gets even more shorter:
 
 ```java
-Collections.sort(names, (a, b) -> b.compareTo(a));
+names.sort((a, b) -> b.compareTo(a));
 ```
 
 The java compiler is aware of the parameter types so you can skip them as well. Let's dive deeper into how lambda expressions can be used in the wild.
