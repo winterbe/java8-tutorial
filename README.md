@@ -355,6 +355,8 @@ optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
 
 A `java.util.Stream` represents a sequence of elements on which one or more operations can be performed. Stream operations are either _intermediate_ or _terminal_. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a `java.util.Collection` like lists or sets (maps are not supported). Stream operations can either be executed sequential or parallel.
 
+> You should also check out [Stream.js](https://github.com/winterbe/streamjs), a JavaScript port of the Java 8 Streams API.
+
 Let's first look how sequential streams work. First we create a sample source in form of a list of strings:
 
 ```java
