@@ -563,7 +563,7 @@ map.computeIfAbsent(3, num -> "bam");
 map.get(3);             // val33
 ```
 
-Next, we learn how to remove entries for a a given key, only if it's currently mapped to a given value:
+Next, we learn how to remove entries for a given key, only if it's currently mapped to a given value:
 
 ```java
 map.remove(3, "val3");
