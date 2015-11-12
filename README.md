@@ -111,7 +111,7 @@ For one line method bodies you can skip both the braces `{}` and the `return` ke
 names.sort((a, b) -> b.compareTo(a));
 ```
 
-The java compiler is aware of the parameter types so you can skip them as well. Let's dive deeper into how lambda expressions can be used in the wild.
+List now has a `sort` method. Alsot he java compiler is aware of the parameter types so you can skip them as well. Let's dive deeper into how lambda expressions can be used in the wild.
 
 
 ## Functional Interfaces
