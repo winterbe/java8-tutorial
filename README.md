@@ -45,7 +45,9 @@ This article was originally posted on [my blog](http://winterbe.com/posts/2014/0
 
 ## Default Methods for Interfaces
 
-Java 8 enables us to add non-abstract method implementations to interfaces by utilizing the `default` keyword. This feature is also known as **Extension Methods**. Here is our first example:
+Java 8 enables us to add non-abstract method implementations to interfaces by utilizing the `default` keyword. This feature is also known as [virtual extension methods](http://stackoverflow.com/a/24102730). 
+
+Here is our first example:
 
 ```java
 interface Formula {
