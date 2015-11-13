@@ -73,7 +73,7 @@ formula.calculate(100);     // 100.0
 formula.sqrt(16);           // 4.0
 ```
 
-The formula is implemented as an anonymous object. The code is quite verbose: 6 lines of code for such a simple calucation of `sqrt(a * 100)`. As we'll see in the next section, there's a much nicer way of implementing single method objects in Java 8.
+The formula is implemented as an anonymous object. The code is quite verbose: 6 lines of code for such a simple calculation of `sqrt(a * 100)`. As we'll see in the next section, there's a much nicer way of implementing single method objects in Java 8.
 
 
 ## Lambda expressions
@@ -118,7 +118,7 @@ List now has a `sort` method. Also the java compiler is aware of the parameter t
 
 ## Functional Interfaces
 
-How does lambda expressions fit into Javas type system? Each lambda corresponds to a given type, specified by an interface. A so called _functional interface_ must contain **exactly one abstract method** declaration. Each lambda expression of that type will be matched to this abstract method. Since default methods are not abstract you're free to add default methods to your functional interface.
+How does lambda expressions fit into Java's type system? Each lambda corresponds to a given type, specified by an interface. A so called _functional interface_ must contain **exactly one abstract method** declaration. Each lambda expression of that type will be matched to this abstract method. Since default methods are not abstract you're free to add default methods to your functional interface.
 
 We can use arbitrary interfaces as lambda expressions as long as the interface only contains one abstract method. To ensure that your interface meet the requirements, you should add the `@FunctionalInterface` annotation. The compiler is aware of this annotation and throws a compiler error as soon as you try to add a second abstract method declaration to the interface.
 
@@ -239,7 +239,7 @@ Writing to `num` from within the lambda expression is also prohibited.
 
 ### Accessing fields and static variables
 
-In constrast to local variables we have both read and write access to instance fields and static variables from within lambda expressions. This behaviour is well known from anonymous objects.
+In contrast to local variables, we have both read and write access to instance fields and static variables from within lambda expressions. This behaviour is well known from anonymous objects.
 
 ```java
 class Lambda4 {
@@ -316,7 +316,7 @@ personSupplier.get();   // new Person
 
 ### Consumers
 
-Consumers represents operations to be performed on a single input argument.
+Consumers represent operations to be performed on a single input argument.
 
 ```java
 Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
@@ -339,7 +339,7 @@ comparator.reversed().compare(p1, p2);  // < 0
 
 ## Optionals
 
-Optionals are not functional interfaces, instead it's a nifty utility to prevent `NullPointerException`. It's an important concept for the next section, so let's have a quick look at how Optionals work.
+Optionals are not functional interfaces, but nifty utilities to prevent `NullPointerException`. It's an important concept for the next section, so let's have a quick look at how Optionals work.
 
 Optional is a simple container for a value which may be null or non-null. Think of a method which may return a non-null result but sometimes return nothing. Instead of returning `null` you return an `Optional` in Java 8.
 
@@ -355,7 +355,7 @@ optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
 
 ## Streams
 
-A `java.util.Stream` represents a sequence of elements on which one or more operations can be performed. Stream operations are either _intermediate_ or _terminal_. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a `java.util.Collection` like lists or sets (maps are not supported). Stream operations can either be executed sequential or parallel.
+A `java.util.Stream` represents a sequence of elements on which one or more operations can be performed. Stream operations are either _intermediate_ or _terminal_. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a `java.util.Collection` like lists or sets (maps are not supported). Stream operations can either be executed sequentially or parallely.
 
 > You should also check out [Stream.js](https://github.com/winterbe/streamjs), a JavaScript port of the Java 8 Streams API.
 
@@ -482,7 +482,7 @@ reduced.ifPresent(System.out::println);
 
 ## Parallel Streams
 
-As mentioned above streams can be either sequential or parallel. Operations on sequential streams are performed on a single thread while operations on parallel streams are performed concurrent on multiple threads.
+As mentioned above streams can be either sequential or parallel. Operations on sequential streams are performed on a single thread while operations on parallel streams are performed concurrently on multiple threads.
 
 The following example demonstrates how easy it is to increase the performance by using parallel streams.
 
@@ -600,7 +600,7 @@ Java 8 contains a brand new date and time API under the package `java.time`. The
 
 ### Clock
 
-Clock provides access to the current date and time. Clocks are aware of a timezone and may be used instead of `System.currentTimeMillis()` to retrieve the current milliseconds. Such an instantaneous point on the time-line is also represented by the class `Instant`. Instants can be used to create legacy `java.util.Date` objects.
+Clock provides access to the current date and time. Clocks are aware of a timezone and may be used instead of `System.currentTimeMillis()` to retrieve the current time in milliseconds since Unix EPOCH. Such an instantaneous point on the time-line is also represented by the class `Instant`. Instants can be used to create legacy `java.util.Date` objects.
 
 ```java
 Clock clock = Clock.systemDefaultZone();
@@ -644,7 +644,7 @@ System.out.println(hoursBetween);       // -3
 System.out.println(minutesBetween);     // -239
 ```
 
-LocalTime comes with various factory method to simplify the creation of new instances, including parsing of time strings.
+LocalTime comes with various factory methods to simplify the creation of new instances, including parsing of time strings.
 
 ```java
 LocalTime late = LocalTime.of(23, 59, 59);
@@ -763,7 +763,7 @@ class Person {}
 class Person {}
 ```
 
-Using variant 2 the java compiler implicitly sets up the `@Hints` annotation under the hood. That's important for reading annotation informations via reflection.
+Using variant 2 the java compiler implicitly sets up the `@Hints` annotation under the hood. That's important for reading annotation information via reflection.
 
 ```java
 Hint hint = Person.class.getAnnotation(Hint.class);
