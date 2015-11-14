@@ -137,7 +137,7 @@ Integer converted = converter.convert("123");
 System.out.println(converted);    // 123
 ```
 
-Keep in mind that the code is also valid if the `@FunctionalInterface` annotation would be ommited.
+Keep in mind that the code is also valid if the `@FunctionalInterface` annotation would be omitted.
 
 
 ## Method and Constructor References
