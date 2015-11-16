@@ -535,7 +535,9 @@ As you can see both code snippets are almost identical but the parallel sort is 
 
 ## Maps
 
-As already mentioned maps don't support streams. Instead maps now support various new and useful methods for doing common tasks.
+As already mentioned maps do not directly support streams. There's no `stream()` method available on the `Map` interface itself, however you can create specialized streams upon the keys, values or entries of a map via `map.keySet().stream()`, `map.values().stream()` and `map.entrySet().stream()`. 
+
+Furthermore maps support various new and useful methods for doing common tasks.
 
 ```java
 Map<Integer, String> map = new HashMap<>();
