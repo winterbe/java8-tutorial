@@ -107,7 +107,7 @@ As you can see the code is much shorter and easier to read. But it gets even sho
 Collections.sort(names, (String a, String b) -> b.compareTo(a));
 ```
 
-For one line method bodies you can skip both the braces `{}` and the `return` keyword. But it gets even more shorter:
+For one line method bodies you can skip both the braces `{}` and the `return` keyword. But it gets even shorter:
 
 ```java
 names.sort((a, b) -> b.compareTo(a));
