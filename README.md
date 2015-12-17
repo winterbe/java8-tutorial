@@ -344,13 +344,17 @@ Optionals are not functional interfaces, but nifty utilities to prevent `NullPoi
 Optional is a simple container for a value which may be null or non-null. Think of a method which may return a non-null result but sometimes return nothing. Instead of returning `null` you return an `Optional` in Java 8.
 
 ```java
-Optional<String> optional = Optional.of("bam");
+Optional<String> optional = Optional.ofNullable("bam");
 
 optional.isPresent();           // true
 optional.get();                 // "bam"
 optional.orElse("fallback");    // "bam"
 
 optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
+
+List<String> initials = null;                                                     // uninitilized
+initials = Optional.ofNullable(initials).orElse(Arrays.asList("abc", "def"));     // ["abc", "def"]
+
 ```
 
 ## Streams
