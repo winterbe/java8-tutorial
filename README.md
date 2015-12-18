@@ -729,7 +729,7 @@ System.out.println(string);     // Nov 03, 2014 - 07:13
 
 Unlike `java.text.NumberFormat` the new `DateTimeFormatter` is immutable and **thread-safe**.
 
-For details on the pattern syntax read [here](http://download.java.net/jdk8/docs/api/java/time/format/DateTimeFormatter.html).
+For details on the pattern syntax read [here](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html).
 
 
 ## Annotations
