@@ -267,7 +267,7 @@ Remember the formula example from the first section? Interface `Formula` defines
 Default methods **cannot** be accessed from within lambda expressions. The following code does not compile:
 
 ```java
-Formula formula = (a) -> sqrt( a * 100);
+Formula formula = (a) -> sqrt(a * 100);
 ```
 
 
