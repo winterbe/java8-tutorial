@@ -167,7 +167,7 @@ String converted = converter.convert("Java");
 System.out.println(converted);    // "J"
 ```
 
-Let's see how the `::` keyword works for constructors. First we define an example bean with different constructors:
+Let's see how the `::` keyword works for constructors. First we define an example class with different constructors:
 
 ```java
 class Person {
