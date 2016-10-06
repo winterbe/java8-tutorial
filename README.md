@@ -6,6 +6,8 @@ Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial gu
 
 This article was originally posted on [my blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/). You should [follow me on Twitter](https://twitter.com/winterbe_).
 
+_If you like this project, please give me a star._ &#9733;
+
 ## Table of Contents
 
 * [Default Methods for Interfaces](#default-methods-for-interfaces)
