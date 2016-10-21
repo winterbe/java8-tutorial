@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 /**
  * @author Benjamin Winterberg
+ * @author Ramazan
  */
 public class Atomic1 {
 
