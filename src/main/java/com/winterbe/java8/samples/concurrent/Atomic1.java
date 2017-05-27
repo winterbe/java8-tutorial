@@ -1,5 +1,7 @@
 package com.winterbe.java8.samples.concurrent;
 
+import org.junit.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,34 +12,33 @@ import java.util.stream.IntStream;
  */
 public class Atomic1 {
 
-    private static final int NUM_INCREMENTS = 1000;
+    public final int NUM_INCREMENTS = 1000;
 
-    private static AtomicInteger atomicInt = new AtomicInteger(0);
+    public AtomicInteger atomicInt = new AtomicInteger(0);
+    public Integer normalInt = 0;
 
-    public static void main(String[] args) {
-        testIncrement();
-        testAccumulate();
-        testUpdate();
-    }
-
-    private static void testUpdate() {
+    @Test
+    public void testUpdate() {
         atomicInt.set(0);
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
 
         IntStream.range(0, NUM_INCREMENTS)
                 .forEach(i -> {
-                    Runnable task = () ->
-                            atomicInt.updateAndGet(n -> n + 2);
+                    Runnable task = () -> {
+                        atomicInt.updateAndGet(n -> n + 2);
+                        normalInt += 2;
+                    };
                     executor.submit(task);
                 });
-
         ConcurrentUtils.stop(executor);
 
         System.out.format("Update: %d\n", atomicInt.get());
+        System.out.format("Update: %d\n", normalInt);//error
     }
 
-    private static void testAccumulate() {
+    @Test
+    public void testAccumulate() {
         atomicInt.set(0);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -54,7 +55,8 @@ public class Atomic1 {
         System.out.format("Accumulate: %d\n", atomicInt.get());
     }
 
-    private static void testIncrement() {
+    @Test
+    public void testIncrement() {
         atomicInt.set(0);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);

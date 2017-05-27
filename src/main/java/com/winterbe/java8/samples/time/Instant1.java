@@ -1,5 +1,7 @@
 package com.winterbe.java8.samples.time;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -9,6 +11,7 @@ import java.time.temporal.ChronoUnit;
  *         <p>
  *         Instant is a timestamp ,support operator like + - * /
  */
+@Slf4j
 public class Instant1 {
 
     public static void main(String[] a) {

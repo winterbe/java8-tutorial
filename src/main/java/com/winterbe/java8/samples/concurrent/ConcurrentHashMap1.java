@@ -1,5 +1,7 @@
 package com.winterbe.java8.samples.concurrent;
 
+import org.junit.Test;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 
@@ -8,15 +10,7 @@ import java.util.concurrent.ForkJoinPool;
  */
 public class ConcurrentHashMap1 {
 
-    public static void main(String[] args) {
-        System.out.println("Parallelism: " + ForkJoinPool.getCommonPoolParallelism());
-
-        testForEach();
-        testSearch();
-        testReduce();
-    }
-
-    private static void testReduce() {
+    public void testReduce() {
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
         map.putIfAbsent("han", "solo");
@@ -29,7 +23,7 @@ public class ConcurrentHashMap1 {
         System.out.println(reduced);
     }
 
-    private static void testSearch() {
+    public void testSearch() {
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
         map.putIfAbsent("han", "solo");
@@ -60,8 +54,8 @@ public class ConcurrentHashMap1 {
 
         System.out.println(result2);
     }
-
-    private static void testForEach() {
+@Test
+    public void testForEach() {
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
         map.putIfAbsent("foo", "bar");
         map.putIfAbsent("han", "solo");
