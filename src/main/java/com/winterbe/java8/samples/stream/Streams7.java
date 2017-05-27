@@ -27,9 +27,10 @@ public class Streams7 {
     }
 
     public static void main(String[] args) {
-//        test1();
-        test2();
+        test1();
+//        test2();
     }
+
 
     static void test2() {
         IntStream.range(1, 4)

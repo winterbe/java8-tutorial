@@ -96,7 +96,13 @@ public class Streams1 {
         reduced.ifPresent(System.out::println);
         // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
 
+        Optional<String> reduced2 =
+                stringCollection
+                        .stream()
+                        .sorted()
+                        .reduce((s1, s2) -> s1.startsWith("a") ? s2 : s1 + "#" + s2);
 
+        reduced2.ifPresent(System.out::println);
     }
 
 }
