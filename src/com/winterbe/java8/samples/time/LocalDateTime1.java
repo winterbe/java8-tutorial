@@ -1,5 +1,6 @@
 package com.winterbe.java8.samples.time;
 
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Benjamin Winterberg
@@ -34,14 +36,21 @@ public class LocalDateTime1 {
         Date legacyDate = Date.from(instant);
         System.out.println(legacyDate);     // Wed Dec 31 23:59:59 CET 2014
 
+        System.out.println("------------------");
 
+        LocalDateTime today = LocalDateTime.now();
+        System.out.println(today);
+
+        System.out.println("------------------");
         DateTimeFormatter formatter =
                 DateTimeFormatter
-                        .ofPattern("MMM dd, yyyy - HH:mm");
+                        .ofPattern("MMM dd, yyyy - HH:mm")
+                        .withLocale(Locale.ENGLISH);
 
         LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", formatter);
         String string = parsed.format(formatter);
         System.out.println(string);     // Nov 03, 2014 - 07:13
+
     }
 
 }

@@ -1,5 +1,7 @@
 package com.winterbe.java8.samples.lambda;
 
+import com.winterbe.java8.samples.lambda.beans.Person;
+
 /**
  * @author Benjamin Winterberg
  */

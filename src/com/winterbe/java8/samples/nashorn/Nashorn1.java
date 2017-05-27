@@ -1,6 +1,5 @@
 package com.winterbe.java8.samples.nashorn;
 
-import com.winterbe.java8.samples.lambda.Person;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -27,7 +26,7 @@ public class Nashorn1 {
 
         invocable.invokeFunction("fun2", new Date());
         invocable.invokeFunction("fun2", LocalDateTime.now());
-        invocable.invokeFunction("fun2", new Person());
+        invocable.invokeFunction("fun2", new Nashorn7.Person());
     }
 
 }
