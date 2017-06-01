@@ -17,7 +17,7 @@ public class Optional3 {
     /**
      * instead of optional
      */
-    public Optional<Object> getOptionalWithObj(int i) {
+    public Optional<Object> getObjWithOptional (int i) {
         return Optional.ofNullable(getObj(i));
     }
 
@@ -33,7 +33,7 @@ public class Optional3 {
         }
 
         //with optional
-        Optional<Object> resultOpt = service.getOptionalWithObj(4);
+        Optional<Object> resultOpt = service.getObjWithOptional(4);
         resultOpt.ifPresent(o -> {
             //do something
             o.toString();

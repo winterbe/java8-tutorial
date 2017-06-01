@@ -27,10 +27,10 @@ public class Semaphore2 {
         try {
             permit = semaphore.tryAcquire(1, TimeUnit.SECONDS);
             if (permit) {
-                System.out.println("Semaphore acquired");
+                System.out.println("Semaphore acquired:"+Thread.currentThread().getName());
                 ConcurrentUtils.sleep(5);
             } else {
-                System.out.println("Could not acquire semaphore");
+                System.out.println("Could not acquire semaphore:"+Thread.currentThread().getName());
             }
         } catch (InterruptedException e) {
             throw new IllegalStateException(e);
