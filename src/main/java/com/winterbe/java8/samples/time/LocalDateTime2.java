@@ -13,9 +13,7 @@ import org.junit.Test;
 public class LocalDateTime2 {
 
   public static void main(String[] a) {
-    /**
-     * formatter by String
-     */
+    //formatter by String
     LocalDate date = LocalDate.now();
     print("default date", date);
     LocalTime time = LocalTime.now();
