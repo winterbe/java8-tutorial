@@ -271,7 +271,7 @@ class Lambda4 {
 
 Remember the formula example from the first section? Interface `Formula` defines a default method `sqrt` which can be accessed from each formula instance including anonymous objects. This does not work with lambda expressions.
 
-Default methods **cannot** be accessed from within lambda expressions. The following code does not compile:
+Default methods **cannot** be accessed from within lambda expressions.
 
 ```java
 Formula formula1 = (a) -> sqrt(a * 100); // Not compile
