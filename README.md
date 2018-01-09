@@ -8,7 +8,7 @@ Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial gu
 ---
 
 <p align="center">
- ★★★ Like this project? Leave a star, <a href="https://twitter.com/winterbe_">follow on Twitter</a> and check out my new project <a href="https://github.com/winterbe/sequency">Sequency</a>. Thanks! ★★★
+ ★★★ Like this project? Leave a star, <a href="https://twitter.com/winterbe_">follow on Twitter</a> or <a href="https://www.paypal.me/winterbe">donate</a> to support my work. Thanks! ★★★
 </p>
 
 ---
