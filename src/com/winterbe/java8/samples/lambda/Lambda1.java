@@ -41,7 +41,7 @@ public class Lambda1 {
 
         List<String> names3 = null;
 
-        Optional.ofNullable(names3).ifPresent(list -> list.sort(Comparator.naturalOrder()));
+        Optional.ofNullable(names3).ifPresent(Collections::sort);
 
         System.out.println(names3);
     }
