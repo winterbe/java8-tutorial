@@ -6,6 +6,8 @@ import java.util.concurrent.ExecutionException;
 /**
  * @author Benjamin Winterberg
  */
+
+// Updated comment
 public class CompletableFuture1 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
