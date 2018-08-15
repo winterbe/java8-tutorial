@@ -9,9 +9,11 @@ import java.util.stream.IntStream;
  * @author Benjamin Winterberg
  */
 public class Atomic1 {
+	
+	// Test comment
 
     private static final int NUM_INCREMENTS = 1000;
-
+   
     private static AtomicInteger atomicInt = new AtomicInteger(0);
 
     public static void main(String[] args) {
@@ -66,5 +68,6 @@ public class Atomic1 {
 
         System.out.format("Increment: Expected=%d; Is=%d\n", NUM_INCREMENTS, atomicInt.get());
     }
+	//This is my second command.
 
 }
