@@ -19,26 +19,25 @@ public class HttpClientExamples {
     }
 
     private static void syncRequest() throws IOException, InterruptedException {
-        var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder()
                 .uri(URI.create("https://winterbe.com"))
                 .build();
+        var client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
     }
 
     private static void asyncRequest() {
-        var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder()
                 .uri(URI.create("https://winterbe.com"))
                 .build();
+        var client = HttpClient.newHttpClient();
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
                 .thenAccept(System.out::println);
     }
 
     private static void postData() throws IOException, InterruptedException {
-        var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder()
                 .uri(URI.create("https://postman-echo.com/post"))
                 .timeout(Duration.ofSeconds(30))
@@ -46,12 +45,14 @@ public class HttpClientExamples {
                 .header("Content-Type", "text/plain")
                 .POST(HttpRequest.BodyPublishers.ofString("Hi there!"))
                 .build();
+        var client = HttpClient.newHttpClient();
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.statusCode());      // 200
     }
 
     private static void basicAuth() throws IOException, InterruptedException {
         var client = HttpClient.newHttpClient();
+
         var request1 = HttpRequest.newBuilder()
                 .uri(URI.create("https://postman-echo.com/basic-auth"))
                 .build();
