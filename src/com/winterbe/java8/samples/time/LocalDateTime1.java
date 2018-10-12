@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Benjamin Winterberg
@@ -37,11 +38,10 @@ public class LocalDateTime1 {
 
         DateTimeFormatter formatter =
                 DateTimeFormatter
-                        .ofPattern("MMM dd, yyyy - HH:mm");
+                        .ofPattern("MMM dd, yyyy - HH:mm", Locale.ENGLISH);
 
         LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", formatter);
         String string = parsed.format(formatter);
         System.out.println(string);     // Nov 03, 2014 - 07:13
     }
-
 }
