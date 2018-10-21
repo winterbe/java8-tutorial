@@ -36,7 +36,10 @@ public class Lambda3 {
         Predicate<String> isEmpty = String::isEmpty;
         Predicate<String> isNotEmpty = isEmpty.negate();
 
+        // BiPredicates
 
+        BiPredicate<Integer, Integer> bi = (x, y) -> x > y;
+        System.out.println(bi.test(2, 3));
         // Functions
 
         Function<String, Integer> toInteger = Integer::valueOf;
