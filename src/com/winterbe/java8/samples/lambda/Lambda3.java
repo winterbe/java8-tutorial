@@ -56,6 +56,10 @@ public class Lambda3 {
         Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
         greeter.accept(new Person("Luke", "Skywalker"));
 
+        // BiConsumers
+
+        BiConsumer<Integer, String> consumer = (a, b) -> System.out.println(a + b);
+		consumer.accept(10, " Days");       // 10 Days
 
 
         // Comparators
