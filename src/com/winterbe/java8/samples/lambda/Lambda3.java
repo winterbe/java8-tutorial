@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -43,6 +44,11 @@ public class Lambda3 {
         Function<String, String> backToString = toInteger.andThen(String::valueOf);
 
         backToString.apply("123");     // "123"
+
+        // BiFunctions
+
+        BiFunction<Integer, Integer, Integer> add = (num1, num2) -> (num1 + num2);
+        add.apply(20, 25);      // 45
 
 
         // Suppliers
