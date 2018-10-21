@@ -38,8 +38,12 @@ public class Lambda3 {
 
         // BiPredicates
 
-        BiPredicate<Integer, Integer> bi = (x, y) -> x > y;
-        System.out.println(bi.test(2, 3));
+        BiPredicate<Integer, String> condition = (i,s)-> (i>20 && s.startsWith("I"));
+        System.out.println(condition.test(10,"I'm"));               // false
+        System.out.println(condition.test(20,"So"));                // false
+        System.out.println(condition.test(40,"In love"));           // true
+        System.out.println(condition.negate.test(10,"With you"));   //true
+
         // Functions
 
         Function<String, Integer> toInteger = Integer::valueOf;
