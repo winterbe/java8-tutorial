@@ -19,7 +19,7 @@ public class FlatMap {
 			 Arrays.asList("b")
 			 
 		 );
-		System.out.println( "Test By FlatMap in case with Stream"); 
+           System.out.println( "Test By FlatMap in case with Stream"); 
 	    System.out.println(	 phoneList.stream()
 		          .flatMap(Collection::stream)
 		          .collect(Collectors.toList()));
