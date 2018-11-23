@@ -434,7 +434,6 @@ stringCollection
 
 The flat map is used for flatten an array from array into single array
 
-'''
  List<List<String>> phoneList=Arrays.asList(
 			 Arrays.asList("a"),
 			 Arrays.asList("b")
@@ -444,7 +443,7 @@ The flat map is used for flatten an array from array into single array
 		          .flatMap(Collection::stream)
 		          .collect(Collectors.toList())
 
-'''
+
 
 
 ### Match
