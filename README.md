@@ -430,6 +430,23 @@ stringCollection
 // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
 ```
 
+### Flat Map
+
+The flat map is used for flatten an array from array into single array
+
+'''
+ List<List<String>> phoneList=Arrays.asList(
+			 Arrays.asList("a"),
+			 Arrays.asList("b")
+			 
+		 );
+		 phoneList.stream()
+		          .flatMap(Collection::stream)
+		          .collect(Collectors.toList())
+
+'''
+
+
 ### Match
 
 Various matching operations can be used to check whether a certain predicate matches the stream. All of those operations are _terminal_ and return a boolean result.
