@@ -1,0 +1,25 @@
+- 多版本兼容jar包(更好地迁移)
+- JShell的支持
+- 模块化(java9demo和java9demo2)
+- 语法:接口支持私有方法
+- 语法: 钻石操作符
+- 语法: try语句
+- 语法: UnderScore使用限制
+- String存储结构(不在使用char数组,而是字节数组byte=>拉丁字符一个byte就可以存储,只用一个字符,而不是两个)
+                 其它语言,例如中文,使用utf-16,统一两个字节  byte[] encoding flag
+                 StringBuffer,StringBuilder同样发生改变
+- 集合抽象方法
+- 增强的StreamAPI
+- 多分辨率api MultiResolutionImage 的基础实现是java.awt.image.BaseMultiResolutionImage。
+- 全新的http客户端api
+- Deprecated  的相关 API, Applet API
+- j只能java编译工具 sjavac
+- 统一的jvm日志系统
+- javadoc的H5支持
+- Nashorn改进,提供轻量级的js运行
+- java的动态编译器(Java 编译产生的类文件是 Java 虚拟机可以理解的二进制代码，而不是真正的可执行的本地代码)
+                  JIT(Just-in-time耗时)  Aot实验阶段
+
+// 期待
+1. 标准化和轻量级JSON API
+2. 新的货币API  JavaMoney需要手动Maven引入

@@ -32,6 +32,6 @@ public class LocalVariableSyntax {
 
     }
 
-    void someMethod() {}
+
 
 }

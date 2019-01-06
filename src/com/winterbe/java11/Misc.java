@@ -19,22 +19,12 @@ public class Misc {
         strings();
         optionals();
         inputStreams();
-        streams();
     }
 
-    private static void streams() {
-        System.out.println(Stream.ofNullable(null).count());   // 0
-        System.out.println(Stream.of(1, 2, 3, 2, 1)
-                .dropWhile(n -> n < 3)
-                .collect(Collectors.toList()));     // [3, 2, 1]
-        System.out.println(Stream.of(1, 2, 3, 2, 1)
-                .takeWhile(n -> n < 3)
-                .collect(Collectors.toList()));     // [1, 2]
-    }
 
     private static void inputStreams() throws IOException {
         var classLoader = ClassLoader.getSystemClassLoader();
-        var inputStream = classLoader.getResourceAsStream("com/winterbe/java11/dummy.txt");
+        var inputStream = classLoader.getResourceAsStream("com/winterbe/java11/java9.txt");
         var tempFile = File.createTempFile("dummy-copy", "txt");
         try (var outputStream = new FileOutputStream(tempFile)) {
             inputStream.transferTo(outputStream);
