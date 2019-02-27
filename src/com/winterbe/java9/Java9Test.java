@@ -1,4 +1,4 @@
-package com.winterbe.mine;
+package com.winterbe.java9;
 
 import org.junit.Test;
 
@@ -40,9 +40,7 @@ public class Java9Test {
     public static void main(String[] args) {
         // 钻石操作符 声明的是子类对象
         Set<String> set = new HashSet<>();
-        Set<String> set2 = new HashSet<>() {
-        };
-
+        Set<String> set2 = new HashSet<>() {};
 
         //  UnderScore(下划线)使用的限制
 //        String _ = "hello";  //java8支持标识符独立使用
@@ -123,7 +121,7 @@ public class Java9Test {
         }
         //java9
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("com/winterbe/mine/java9.txt");
+        InputStream inputStream = classLoader.getResourceAsStream("com/winterbe/java9/java9.txt");
         InputStreamReader reader = new InputStreamReader(System.in);
         OutputStreamWriter writer = new OutputStreamWriter(System.out);
         try (inputStream; reader; writer) {

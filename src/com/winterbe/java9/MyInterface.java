@@ -1,4 +1,4 @@
-package com.winterbe.mine;
+package com.winterbe.java9;
 
 /**
  * 接口支持抽象方法
