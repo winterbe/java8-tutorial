@@ -58,10 +58,10 @@ Here is our first example:
 
 ```java
 interface Formula {
-    double calculate(int a);
+    double calculate(int a,int b);
 
-    default double sqrt(int a) {
-        return Math.sqrt(a);
+    default double identity(int a) {
+        return a;
     }
 }
 ```
@@ -69,15 +69,15 @@ interface Formula {
 Besides the abstract method `calculate` the interface `Formula` also defines the default method `sqrt`. Concrete classes only have to implement the abstract method `calculate`. The default method `sqrt` can be used out of the box.
 
 ```java
-Formula formula = new Formula() {
+Formula multiplication = new Formula() {
     @Override
-    public double calculate(int a) {
-        return sqrt(a * 100);
+    public double calculate(int a,int b) {
+        return a*b;
     }
 };
 
-formula.calculate(100);     // 100.0
-formula.sqrt(16);           // 4.0
+multiplication.calculate(5,20);     // 100.0
+multiplication.identity(4);           // 4.0
 ```
 
 The formula is implemented as an anonymous object. The code is quite verbose: 6 lines of code for such a simple calculation of `sqrt(a * 100)`. As we'll see in the next section, there's a much nicer way of implementing single method objects in Java 8.
