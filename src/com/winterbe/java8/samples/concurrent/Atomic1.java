@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
  */
 public class Atomic1 {
 
-    private static final int NUM_INCREMENTS = 1000;
+    private static final int NUM_INCREMENTS = 1000; //test
 
     private static AtomicInteger atomicInt = new AtomicInteger(0);
 
