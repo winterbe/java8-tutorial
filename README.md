@@ -427,7 +427,7 @@ stringCollection
     .sorted((a, b) -> b.compareTo(a))
     .forEach(System.out::println);
 
-// "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
+// "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "BBB1", "AAA2", "AAA1"
 ```
 
 ### Match
