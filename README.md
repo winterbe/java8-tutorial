@@ -1,9 +1,9 @@
 # Modern Java - A Guide to Java 8
 _This article was originally posted on [my blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/)._
 
-> **You should also read my [Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/) (including new language and API features from Java 9, 10 and 11).**
+> **You should also read my [Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/) (including new language and API features from Java 9, 10 and, 11).**
 
-Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial guides you step by step through all new language features. Backed by short and simple code samples you'll learn how to use default interface methods, lambda expressions, method references and repeatable annotations. At the end of the article you'll be familiar with the most recent [API](http://download.java.net/jdk8/docs/api/) changes like streams, functional interfaces, map extensions and the new Date API. **No walls of text, just a bunch of commented code snippets. Enjoy!**
+Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial guides you step by step through all new language features. Backed by short and simple code samples you'll learn how to use default interface methods, lambda expressions, method references and repeatable annotations. At the end of the article, you'll be familiar with the most recent [API](http://download.java.net/jdk8/docs/api/) changes like streams, functional interfaces, map extensions and, the new Date API. **No walls of text, just a bunch of commented code snippets. Enjoy!**
 
 ---
 
@@ -98,7 +98,7 @@ Collections.sort(names, new Comparator<String>() {
 });
 ```
 
-The static utility method `Collections.sort` accepts a list and a comparator in order to sort the elements of the given list. You often find yourself creating anonymous comparators and pass them to the sort method.
+The static utility method `Collections.sort` accepts a list and a comparator in order to sort the elements of the given list. You often find yourself creating anonymous comparators and passing them to the sort method.
 
 Instead of creating anonymous objects all day long, Java 8 comes with a much shorter syntax, **lambda expressions**:
 
@@ -114,20 +114,20 @@ As you can see the code is much shorter and easier to read. But it gets even sho
 Collections.sort(names, (String a, String b) -> b.compareTo(a));
 ```
 
-For one line method bodies you can skip both the braces `{}` and the `return` keyword. But it gets even shorter:
+For one line method bodies, you can skip both the braces `{}` and the `return` keyword. But it gets even shorter:
 
 ```java
 names.sort((a, b) -> b.compareTo(a));
 ```
 
-List now has a `sort` method. Also the java compiler is aware of the parameter types so you can skip them as well. Let's dive deeper into how lambda expressions can be used in the wild.
+List now has a `sort` method. Also, the java compiler is aware of the parameter types so you can skip them as well. Let's dive deeper into how lambda expressions can be used in the wild.
 
 
 ## Functional Interfaces
 
-How does lambda expressions fit into Java's type system? Each lambda corresponds to a given type, specified by an interface. A so called _functional interface_ must contain **exactly one abstract method** declaration. Each lambda expression of that type will be matched to this abstract method. Since default methods are not abstract you're free to add default methods to your functional interface.
+How do lambda expressions fit into Java's type system? Each lambda corresponds to a given type, specified by an interface. A so-called _functional interface_ must contain **exactly one abstract method** declaration. Each lambda expression of that type will be matched to this abstract method. Since default methods are not abstract you're free to add default methods to your functional interface.
 
-We can use arbitrary interfaces as lambda expressions as long as the interface only contains one abstract method. To ensure that your interface meet the requirements, you should add the `@FunctionalInterface` annotation. The compiler is aware of this annotation and throws a compiler error as soon as you try to add a second abstract method declaration to the interface.
+We can use arbitrary interfaces as lambda expressions as long as the interface only contains one abstract method. To ensure that your interface meets the requirements, you should add the `@FunctionalInterface` annotation. The compiler is aware of this annotation and throws a compiler error as soon as you try to add a second abstract method declaration to the interface.
 
 Example:
 
@@ -209,7 +209,7 @@ We create a reference to the Person constructor via `Person::new`. The Java comp
 
 ## Lambda Scopes
 
-Accessing outer scope variables from lambda expressions is very similar to anonymous objects. You can access final variables from the local outer scope as well as instance fields and static variables.
+Accessing outer scope variables from lambda expressions is very similar to anonymous objects. You can access final variables from the local outer scope as well as for instance fields and static variables.
 
 ### Accessing local variables
 
@@ -348,7 +348,7 @@ comparator.reversed().compare(p1, p2);  // < 0
 
 Optionals are not functional interfaces, but nifty utilities to prevent `NullPointerException`. It's an important concept for the next section, so let's have a quick look at how Optionals work.
 
-Optional is a simple container for a value which may be null or non-null. Think of a method which may return a non-null result but sometimes return nothing. Instead of returning `null` you return an `Optional` in Java 8.
+Optional is a simple container for a value that may be null or non-null. Think of a method that may return a non-null result but sometimes return nothing. Instead of returning `null` you return an `Optional` in Java 8.
 
 ```java
 Optional<String> optional = Optional.of("bam");
@@ -362,9 +362,9 @@ optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
 
 ## Streams
 
-A `java.util.Stream` represents a sequence of elements on which one or more operations can be performed. Stream operations are either _intermediate_ or _terminal_. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a `java.util.Collection` like lists or sets (maps are not supported). Stream operations can either be executed sequentially or parallely.
+A `java.util.Stream` represents a sequence of elements on which one or more operations can be performed. Stream operations are either _intermediate_ or _terminal_. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a `java.util.Collection` like lists or sets (maps are not supported). Stream operations can either be executed sequentially or parallelly.
 
-> Streams are extremely powerful, so I wrote a separate [Java 8 Streams Tutorial](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/). **You should also check out [Sequency](https://github.com/winterbe/sequency) as a similiar library for the web.**
+> Streams are extremely powerful, so I wrote a separate [Java 8 Streams Tutorial](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/). **You should also check out [Sequency](https://github.com/winterbe/sequency) as a similar library for the web.**
 
 Let's first look how sequential streams work. First we create a sample source in form of a list of strings:
 
@@ -544,7 +544,7 @@ As you can see both code snippets are almost identical but the parallel sort is 
 
 As already mentioned maps do not directly support streams. There's no `stream()` method available on the `Map` interface itself, however you can create specialized streams upon the keys, values or entries of a map via `map.keySet().stream()`, `map.values().stream()` and `map.entrySet().stream()`. 
 
-Furthermore maps support various new and useful methods for doing common tasks.
+Furthermore, maps support various new and useful methods for doing common tasks.
 
 ```java
 Map<Integer, String> map = new HashMap<>();
@@ -605,11 +605,11 @@ Merge either put the key/value into the map if no entry for the key exists, or t
 
 ## Date API
 
-Java 8 contains a brand new date and time API under the package `java.time`. The new Date API is comparable with the [Joda-Time](http://www.joda.org/joda-time/) library, however it's [not the same](http://blog.joda.org/2009/11/why-jsr-310-isn-joda-time_4941.html). The following examples cover the most important parts of this new API.
+Java 8 contains a brand new date and time API under the package `java.time`. The new Date API is comparable with the [Joda-Time](http://www.joda.org/joda-time/) library, however, it's [not the same](http://blog.joda.org/2009/11/why-jsr-310-isn-joda-time_4941.html). The following examples cover the most important parts of this new API.
 
 ### Clock
 
-Clock provides access to the current date and time. Clocks are aware of a timezone and may be used instead of `System.currentTimeMillis()` to retrieve the current time in milliseconds since Unix EPOCH. Such an instantaneous point on the time-line is also represented by the class `Instant`. Instants can be used to create legacy `java.util.Date` objects.
+Clock provides access to the current date and time. Clocks are aware of a timezone and may be used instead of `System.currentTimeMillis()` to retrieve the current time in milliseconds since Unix EPOCH. Such an instantaneous point on the timeline is also represented by the class `Instant`. Instants can be used to create legacy `java.util.Date` objects.
 
 ```java
 Clock clock = Clock.systemDefaultZone();
@@ -638,7 +638,7 @@ System.out.println(zone2.getRules());
 
 ### LocalTime
 
-LocalTime represents a time without a timezone, e.g. 10pm or 17:30:15. The following example creates two local times for the timezones defined above. Then we compare both times and calculate the difference in hours and minutes between both times.
+LocalTime represents a time without a timezone, e.g. 10 pm or 17:30:15. The following example creates two local times for the timezones defined above. Then we compare both times and calculate the difference in hours and minutes between both times.
 
 ```java
 LocalTime now1 = LocalTime.now(zone1);
@@ -653,7 +653,7 @@ System.out.println(hoursBetween);       // -3
 System.out.println(minutesBetween);     // -239
 ```
 
-LocalTime comes with various factory methods to simplify the creation of new instances, including parsing of time strings.
+LocalTime comes with various factory methods to simplify the creation of new instances, including the parsing of time strings.
 
 ```java
 LocalTime late = LocalTime.of(23, 59, 59);
@@ -670,7 +670,7 @@ System.out.println(leetTime);   // 13:37
 
 ### LocalDate
 
-LocalDate represents a distinct date, e.g. 2014-03-11. It's immutable and works exactly analog to LocalTime. The sample demonstrates how to calculate new dates by adding or subtracting days, months or years. Keep in mind that each manipulation returns a new instance.
+LocalDate represents a distinct date, e.g. 2014-03-11. It's immutable and works exactly analog to LocalTime. The sample demonstrates how to calculate new dates by adding or subtracting days, months, or years. Keep in mind that each manipulation returns a new instance.
 
 ```java
 LocalDate today = LocalDate.now();
@@ -711,7 +711,7 @@ long minuteOfDay = sylvester.getLong(ChronoField.MINUTE_OF_DAY);
 System.out.println(minuteOfDay);    // 1439
 ```
 
-With the additional information of a timezone it can be converted to an instant. Instants can easily be converted to legacy dates of type `java.util.Date`.
+With the additional information of a timezone, it can be converted to an instant. Instants can easily be converted to legacy dates of type `java.util.Date`.
 
 ```java
 Instant instant = sylvester
@@ -797,7 +797,7 @@ Furthermore the usage of annotations in Java 8 is expanded to two new targets:
 
 ## Where to go from here?
 
-My programming guide to Java 8 ends here. If you want to learn more about all the new classes and features of the JDK 8 API, check out my [JDK8 API Explorer](http://winterbe.com/projects/java8-explorer/). It helps you figuring out all the new classes and hidden gems of JDK 8, like `Arrays.parallelSort`, `StampedLock` and `CompletableFuture` - just to name a few.
+My programming guide to Java 8 ends here. If you want to learn more about all the new classes and features of the JDK 8 API, check out my [JDK8 API Explorer](http://winterbe.com/projects/java8-explorer/). It helps you figure out all the new classes and hidden gems of JDK 8, like `Arrays.parallelSort`, `StampedLock` and `CompletableFuture` - just to name a few.
 
 I've also published a bunch of follow-up articles on my [blog](http://winterbe.com) that might be interesting to you:
 
