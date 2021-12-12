@@ -34,6 +34,7 @@ Welcome to my introduction to [Java 8](https://jdk8.java.net/). This tutorial gu
   * [Filter](#filter)
   * [Sorted](#sorted)
   * [Map](#map)
+  * [FlatMap](#flatmap)
   * [Match](#match)
   * [Count](#count)
   * [Reduce](#reduce)
@@ -429,6 +430,22 @@ stringCollection
 
 // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
 ```
+
+
+### FlatMap
+
+The _intermediate_ operation `flatmap` flattens the input Stream of Streams to a single Stream of elements. It can be thought of as two separate operations "flatten + map" which is combined into one.
+In the following example each input string is mapped to stream of two separate strings which results into stream of streams. Then the flattening operation flattens the stream of streams and returns a single stream of strings.
+
+```java
+stringCollection
+   .stream()
+   .flatMap(value -> Stream.of(value.toLowerCase(), value.toUpperCase()))
+   .collect(Collectors.toList());
+
+// "ddd2" , "DDD2" , "aaa2" , "AAA2" , "bbb1" , "BBB1" , "aaa1" , "AAA1" , "bbb3" , "BBB3" , "ccc" , "CCC" , "bbb2" , "BBB2" , "ddd1" , "DDD1"
+```
+
 
 ### Match
 

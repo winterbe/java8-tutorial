@@ -3,6 +3,8 @@ package com.winterbe.java8.samples.stream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Benjamin Winterberg
@@ -52,7 +54,18 @@ public class Streams1 {
                 .forEach(System.out::println);
 
         // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
-
+        
+        
+        // flatmap
+        
+        List<String> flatmappedList = stringCollection
+        		.stream()
+        		.flatMap(value -> Stream.of(value.toLowerCase(), value.toUpperCase()))
+        		.collect(Collectors.toList());
+        System.out.println(flatmappedList);
+        
+        // "ddd2" , "DDD2" , "aaa2" , "AAA2" , "bbb1" , "BBB1" , "aaa1" , "AAA1" , "bbb3" , "BBB3" , "ccc" , "CCC" , "bbb2" , "BBB2" , "ddd1" , "DDD1"
+     
 
         // matching
 
