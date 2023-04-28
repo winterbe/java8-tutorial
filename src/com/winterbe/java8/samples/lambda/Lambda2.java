@@ -19,7 +19,7 @@ public class Lambda2 {
     interface PersonFactory<P extends Person> {
         P create(String firstName, String lastName);
     }
-
+// Devendra made a comment
     public static void main(String[] args) {
         Converter<String, Integer> integerConverter1 = (from) -> Integer.valueOf(from);
         Integer converted1 = integerConverter1.convert("123");

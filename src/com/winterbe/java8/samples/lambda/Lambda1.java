@@ -20,7 +20,8 @@ public class Lambda1 {
                 return b.compareTo(a);
             }
         });
-
+         
+        // Devendra made a change
         Collections.sort(names, (String a, String b) -> {
             return b.compareTo(a);
         });
