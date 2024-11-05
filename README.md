@@ -1,3 +1,5 @@
+[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-7f3f97)](https://app.codeanywhere.com/#https://github.com/winterbe/java8-tutorial)
+
 # Modern Java - A Guide to Java 8
 _This article was originally posted on [my blog](http://winterbe.com/posts/2014/03/16/java-8-tutorial/)._
 
