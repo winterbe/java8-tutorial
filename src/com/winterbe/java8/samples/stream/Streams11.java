@@ -1,16 +1,16 @@
 package com.winterbe.java8.samples.stream;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Benjamin Winterberg
+ * Optimized version of Streams11.
  */
 public class Streams11 {
 
+    // ✅ Immutable model (better for parallel streams)
     static class Person {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         Person(String name, int age) {
             this.name = name;
@@ -24,96 +24,63 @@ public class Streams11 {
     }
 
     public static void main(String[] args) {
-        List<Person> persons =
-            Arrays.asList(
-                new Person("Max", 18),
-                new Person("Peter", 23),
-                new Person("Pamela", 23),
-                new Person("David", 12));
+        List<Person> persons = List.of(
+            new Person("Max", 18),
+            new Person("Peter", 23),
+            new Person("Pamela", 23),
+            new Person("David", 12)
+        );
 
-//        test1(persons);
-//        test2(persons);
-//        test3(persons);
-//        test4(persons);
-//        test5(persons);
-        test6(persons);
+        findOldest(persons);
+        sumAges(persons);
+        sumAgesParallel(persons);
     }
 
-    private static void test1(List<Person> persons) {
-        persons
-            .stream()
-            .reduce((p1, p2) -> p1.age > p2.age ? p1 : p2)
-            .ifPresent(System.out::println);    // Pamela
+    // ✅ 1. Find oldest person (cleaner)
+    private static void findOldest(List<Person> persons) {
+        persons.stream()
+            .max((p1, p2) -> Integer.compare(p1.age, p2.age))
+            .ifPresent(System.out::println);
     }
 
-    private static void test2(List<Person> persons) {
-        Person result =
-            persons
-                .stream()
-                .reduce(new Person("", 0), (p1, p2) -> {
-                    p1.age += p2.age;
-                    p1.name += p2.name;
-                    return p1;
-                });
+    // ❌ Old reduce misuse replaced with proper sum
+    // ✅ 2. Sum ages (best practice)
+    private static void sumAges(List<Person> persons) {
+        int sum = persons.stream()
+            .mapToInt(p -> p.age)
+            .sum();
 
-        System.out.format("name=%s; age=%s", result.name, result.age);
+        System.out.println("Sum (sequential): " + sum);
     }
 
-    private static void test3(List<Person> persons) {
-        Integer ageSum = persons
-            .stream()
-            .reduce(0, (sum, p) -> sum += p.age, (sum1, sum2) -> sum1 + sum2);
+    // ✅ 3. Parallel-safe version
+    private static void sumAgesParallel(List<Person> persons) {
+        int sum = persons.parallelStream()
+            .mapToInt(p -> p.age)
+            .sum();
 
-        System.out.println(ageSum);
+        System.out.println("Sum (parallel): " + sum);
     }
 
-    private static void test4(List<Person> persons) {
-        Integer ageSum = persons
-            .stream()
+    // ⚠️ Educational: reduce with debug (safe version)
+    private static void debugReduce(List<Person> persons) {
+        int sum = persons.parallelStream()
             .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s\n", sum, p);
-                    return sum += p.age;
+                (partialSum, p) -> {
+                    System.out.printf(
+                        "accumulator: sum=%d; person=%s; thread=%s%n",
+                        partialSum, p, Thread.currentThread().getName()
+                    );
+                    return partialSum + p.age;
                 },
                 (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s\n", sum1, sum2);
+                    System.out.printf(
+                        "combiner: sum1=%d; sum2=%d; thread=%s%n",
+                        sum1, sum2, Thread.currentThread().getName()
+                    );
                     return sum1 + sum2;
                 });
 
-        System.out.println(ageSum);
-    }
-
-    private static void test5(List<Person> persons) {
-        Integer ageSum = persons
-            .parallelStream()
-            .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s\n", sum, p);
-                    return sum += p.age;
-                },
-                (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s\n", sum1, sum2);
-                    return sum1 + sum2;
-                });
-
-        System.out.println(ageSum);
-    }
-
-    private static void test6(List<Person> persons) {
-        Integer ageSum = persons
-            .parallelStream()
-            .reduce(0,
-                (sum, p) -> {
-                    System.out.format("accumulator: sum=%s; person=%s; thread=%s\n",
-                        sum, p, Thread.currentThread().getName());
-                    return sum += p.age;
-                },
-                (sum1, sum2) -> {
-                    System.out.format("combiner: sum1=%s; sum2=%s; thread=%s\n",
-                        sum1, sum2, Thread.currentThread().getName());
-                    return sum1 + sum2;
-                });
-
-        System.out.println(ageSum);
+        System.out.println("Final sum: " + sum);
     }
 }
